@@ -11,7 +11,7 @@ defmodule ChatAppWeb.Endpoint do
   ]
 
   socket "/socket", ChatAppWeb.UserSocket,
-    websocket: true,
+    websocket: [connect_info: [:peer_data, :x_headers]],
     longpoll: false
 
   # Serve at "/" the static files from "priv/static" directory.

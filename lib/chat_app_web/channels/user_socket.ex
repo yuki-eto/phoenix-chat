@@ -15,7 +15,10 @@ defmodule ChatAppWeb.UserSocket do
   #
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
-  def connect(_params, socket, _connect_info) do
+  def connect(_params, socket, connect_info) do
+    socket =
+      socket
+      |> assign(:peer_data, connect_info.peer_data)
     {:ok, socket}
   end
 

@@ -15,3 +15,18 @@ import "phoenix_html"
 //
 // Local files can be imported directly using relative paths, for example:
 import socket from "./socket"
+
+import Axios from "axios";
+
+window.onload = () => {
+  Axios.get('/api/messages').then(resp => {
+    const { data } = resp.data;
+    if (data === undefined) return;
+    const msgs = document.querySelector('#messages');
+    data.forEach(item => {
+      const li = document.createElement('li');
+      li.innerText = `[${item.posted_at}] ${item.message}`;
+      msgs.appendChild(li);
+    });
+  });
+};

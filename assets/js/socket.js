@@ -68,8 +68,9 @@ input.addEventListener('keypress', event => {
 });
 
 channel.on('new_msg', payload => {
+  console.log(payload);
   const item = document.createElement('li');
-  item.innerText = `[${Date()}] ${payload.body}`;
+  item.innerText = `[${payload.date}] ${payload.body}`;
   msgs.appendChild(item);
 });
 
