@@ -21,3 +21,5 @@ services:
       - PORT=4000
     volumes:
       - .:/app
+    depends_on:
+      - db
